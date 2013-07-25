@@ -1,0 +1,59 @@
+Setup:
+
+This is developed using MySQL database.
+
+Create database onix
+Set the username and passwords in the file lib/Onix/DB.pm
+Create the database tables using sql/create_tables.sql
+
+To run:
+
+perl bin/run.pl --file=/root/nitish/Onix/ONIX_Books_3.0_sample_1/sample_1_reference_names.xml
+
+This program accepts one parameter, file, which accepts a string. It tries to open the file, read the XML data and insert it into the database.
+
+
+CPAN modules required:
+
+Moose
+Moose::Role
+DBIx::Class
+MooseX::App::Cmd
+XML::Rabbit
+
+
+Original Requirement:
+---------------------
+
+The major part of the TitlePage is ONIX loader - set of Perl, shell and PL/SQL scripts which validate, parse and load data from the ONIX (XML) files to the Oracle database.
+
+So test would be to write simplified ONIX loader which would load only the following elements from the ONIX file to the database:
+
+1.       RecordReference
+2.       ProductForm
+3.       ProductIdentifier, including ProductIDType and IDValue sub-elements
+4.       SupplyDetail, this one is more complex so only the following sub-elements:
+a.       SupplierName
+b.      SupplierRole
+c.       ProductAvailability
+d.      ExpectedShipDate
+e.      Stock, including OnHand and OnOrder sub-elements
+f.        Price, including PriceTypeCode, PriceAmount and CurrencyCode sub-elements 
+
+
+You need to:
+
+1.                   read about ONIX 2.1: http://www.editeur.org/83/Overview/
+
+2.                   download ONIX 2.1 spec and code lists: http://www.editeur.org/15/Previous-Releases/#R 2.1 Downloads
+
+3.                   design DB schema to store elements listed above and provide SQL file which can be used to create corresponding tables
+
+4.                   create Perl OO _module_ which would
+	a.                  validate full ONIX file against ONIX DTD/schema and display errors if any
+	b.                 parse ONIX file and retrieve data for elements listed above
+	c.                  validate element values against ONIX 2.1 code lists (e.g. the "ProductForm" element value must be one of the listed in the "ONIX Code List 7: Product form code", the "ProductIDType" - from "ONIX Code List 5: Product identifier type code", etc.)
+d.                  store data in the DB using DBI (if he can do that using DBIx::Class, it would be big plus)
+5.                   create Perl _script_ which would get full path to the ONIX file as a command line parameter and use that new Perl module created at step 4
+
+ Note: code must be written as it is actual project - it should compile/run w/o errors/warnings and be well structured, commented, etc.
