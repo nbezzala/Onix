@@ -12,7 +12,8 @@ with 'MooseX::Getopt::Strict';
 
 has 'xml_file' => (
 				is => 'rw', isa => 'Str', traits => ['Getopt'],
-				documentation => 'Please enter filename',
+				required => 1,
+				documentation => 'Please enter the full path of a valid xml file',
 			  );
 
 =head2

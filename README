@@ -8,7 +8,7 @@ Create the database tables using sql/create_tables.sql
 
 To run:
 
-perl bin/run.pl --file=/root/nitish/Onix/ONIX_Books_3.0_sample_1/sample_1_reference_names.xml
+perl bin/run.pl --xml_file=/root/nitish/Onix/ONIX_Books_3.0_sample_1/sample_1_reference_names.xml
 
 This program accepts one parameter, file, which accepts a string. It tries to open the file, read the XML data and insert it into the database.
 
