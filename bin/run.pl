@@ -17,6 +17,10 @@ my $onix = Onix->new_with_options();
 my $file = $onix->xml_file;
 
 my $valid = Onix::ValidateXML->new(xml => $file);
+if ( !$valid ) {
+	print "\nCan not prcess the XML file because of the above errors\n";
+	exit 0;
+}
 
 my $product = Onix::Product->new( file => $file );
 
