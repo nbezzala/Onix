@@ -10,7 +10,7 @@ use Moose;
 with 'Onix::DB';
 with 'MooseX::Getopt::Strict';
 
-has 'file' => (
+has 'xml_file' => (
 				is => 'rw', isa => 'Str', traits => ['Getopt'],
 				documentation => 'Please enter filename',
 			  );
