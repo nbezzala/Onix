@@ -16,7 +16,7 @@ sub BUILD {
 
 	# We should have this downloaded from the Onix website
 	# This can not be a comman line parameter.
-	$self->xsd("$FindBin::Bin/..//ONIX_Books_3.0_sample_1/reference.xsd");
+	$self->xsd("$FindBin::Bin/../ONIX_Books_3.0_sample_1/reference.xsd");
 }
 
 sub validate {
