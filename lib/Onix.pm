@@ -3,10 +3,13 @@ package Onix;
 =head2
 The lib file which is called from the .pl which is run by the user.
 Used to read the file name from the command line
-And to creat the product
+And to creat the products
+
+One XMLMessage can have many Products.
 =cut
 
 use Moose;
+use Data::Dumper;
 with 'Onix::DB';
 with 'MooseX::Getopt::Strict';
 
@@ -15,6 +18,15 @@ has 'xml_file' => (
 				required => 1,
 				documentation => 'Please enter the full path of a valid xml file',
 			  );
+
+sub create_products {
+	my $self = shift;
+	my $books = shift;
+
+	foreach my $product( @{$books->products} ) {
+		$self->create_product($product);
+	}
+}
 
 =head2
 Todo: add  transactions if needed.

@@ -6,7 +6,7 @@ use FindBin;
 use lib "$FindBin::Bin/../lib";
 
 use Onix;
-use Onix::Product;
+use Onix::Books;
 use Onix::ValidateXML;
 use Data::Dumper;
 
@@ -22,11 +22,17 @@ if ( !$valid ) {
 	exit 0;
 }
 
-my $product = Onix::Product->new( file => $file );
+my $books = Onix::Books->new( file => $file );
 
-print "RecordReference: ", $product->record_ref, "\n";
-print "Descriptive Detail: ", $product->desc_detail, "\n";
-print $product->prod_ident->pid_type, "\n";
-print $product->prod_ident->id_value, "\n";
 
-my $ok = $onix->create_product($product);
+#print "RecordReference: ", $product->record_ref, "\n";
+#print "Descriptive Detail: ", $product->desc_detail, "\n";
+#print $product->prod_ident->pid_type, "\n";
+#print $product->prod_ident->id_value, "\n";
+
+#print $books, "\n";
+#print $books->products, "\n";
+#print $books->products->[0], "\n";
+#print Dumper($books->products->[0]);
+
+my $ok = $onix->create_products($books);
