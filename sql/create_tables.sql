@@ -3,13 +3,13 @@
 DROP TABLE IF EXISTS Product;
 CREATE TABLE Product (
 	ID INTEGER primary key auto_increment,
-	Reference VARCHAR(100) unique not null -- RecordReference
+	Reference VARCHAR(100) unique not null, -- RecordReference
+	IdentifierID integer references ProductIdentifier(ID)
 );
 
 DROP TABLE IF EXISTS ProductIdentifier;
 create table ProductIdentifier (
 	ID integer primary key auto_increment,
-	ProductID integer references Product(ID),
 	IDTypeCode 	int(2) not null,  -- List 5
 	IDTypeName 	varchar(50),
 	IDValue	 	varchar(255)  -- depends on the IDTypeCode, ToDo 
