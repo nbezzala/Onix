@@ -1,7 +1,8 @@
 package Onix::ValidateXML;
 
 use Moose;
-use XML::LibXML;
+use XML::SAX::ParserFactory;
+use XML::Validator::Schema;
 use Try::Tiny;
 use lib "$FindBin::Bin/../lib";
 
@@ -22,18 +23,26 @@ sub BUILD {
 sub validate {
 	my $self = shift;
 
+=pod
+	my $validator = XML::Validator::Schema->new(file => $self->xsd);
+	my $parser = XML::SAX::ParserFactory->parser(Handler => $validator);
+	eval { $parser->parse_uri( $self->xml ) };
+	die "File failed validation: $@" if $@;
+=cut
+
 	my $schema = XML::LibXML::Schema->new(location => $self->xsd);
 	my $parser = XML::LibXML->new;
 	my $doc = $parser->parse_file($self->xml);
 
 	eval { $schema->validate($doc) };
-
+	
 	if ( my $ex = $@ ) {
 		print $ex;
 		return 0; #Invalid
 	} else {
 		return 1; # Valid XML
 	}
+
 }
 
 1;
