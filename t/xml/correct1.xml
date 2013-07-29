@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<ONIXMessage release="3.0">
+	<Header>
+	<!-- message header data elements -->
+		<Sender>
+			<SenderName>Global Bookinfo</SenderName>
+			<ContactName>Jane King</ContactName>
+			<EmailAddress>jbk@globalbookinfo.com</EmailAddress>
+		</Sender>
+		<Addressee>
+			<AddresseeName>BooksBooksBooks.com</AddresseeName>
+		</Addressee>
+		<SentDateTime>20090510</SentDateTime>
+	</Header>
+	<Product>
+		<RecordReference>www.globalbookinfo.com-01734530</RecordReference>
+		<ProductIdentifier>
+			<ProductIDType>03</ProductIDType>
+			<IDValue>9780007232834</IDValue>
+		</ProductIdentifier>
+		<DescriptiveDetail>
+			<ProductComposition>00</ProductComposition>
+			<ProductForm>BC</ProductForm>
+			<ProductFormDetail>B206</ProductFormDetail>
+			<ProductFormDetail>A209</ProductFormDetail>
+		</DescriptiveDetail>
+	</Product>
+</ONIXMessage>

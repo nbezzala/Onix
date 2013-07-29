@@ -33,5 +33,7 @@ use XML::Rabbit;
 
 has_xpath_value		prod_composition => './ProductComposition';
 has_xpath_value		prod_formcode	=> './ProductForm';
+has_xpath_value_list		form_details => './ProductFormDetail';
 
 finalize_class();
+

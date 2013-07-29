@@ -35,6 +35,12 @@ sub create_product {
 	my $self 	= shift;
 	my $product	= shift;
 
+print Dumper($product->desc_detail->form_details);
+	my $aref;
+	foreach my $fd ( @{$product->desc_detail->form_details} ) {
+		push @{$aref}, { 'formdetail' => $fd };
+	}
+
 	my $new_record = $self->schema->resultset('Product')->create({
 		reference	=> $product->record_ref,
 		identifier	=> {
@@ -44,10 +50,9 @@ sub create_product {
 		desc_detail	=> {
 				compositioncode	=> $product->desc_detail->prod_composition,
 				formcode		=> $product->desc_detail->prod_formcode,
+				formdetails	=> $aref,
 		},
 	});
 }
-#print $product->prod_ident->pid_type, "\n";
-#print $product->prod_ident->id_value, "\n";
 
 1;
