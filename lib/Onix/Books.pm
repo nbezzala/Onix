@@ -10,11 +10,11 @@ package Onix::Product;
 use XML::Rabbit;
 
 has_xpath_value 	record_ref => './RecordReference';
-has_xpath_value		desc_detail => './DescriptiveDetail/ProductForm';
-
 
 has_xpath_object	prod_ident  	=> './ProductIdentifier'
 					=> 'Onix::Product::ProductIdentifier';
+has_xpath_object	desc_detail		=> './DescriptiveDetail'
+					=> 'Onix::Product::DescriptiveDetail';
 
 finalize_class();
 
@@ -24,5 +24,14 @@ use XML::Rabbit;
 
 has_xpath_value		pid_type => './ProductIDType';
 has_xpath_value		id_value => './IDValue';
+
+finalize_class();
+
+
+package Onix::Product::DescriptiveDetail;
+use XML::Rabbit;
+
+has_xpath_value		prod_composition => './ProductComposition';
+has_xpath_value		prod_formcode	=> './ProductForm';
 
 finalize_class();

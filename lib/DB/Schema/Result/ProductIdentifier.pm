@@ -29,11 +29,6 @@ __PACKAGE__->table("ProductIdentifier");
   is_auto_increment: 1
   is_nullable: 0
 
-=head2 productid
-
-  data_type: 'integer'
-  is_nullable: 1
-
 =head2 idtypecode
 
   data_type: 'integer'
@@ -56,8 +51,6 @@ __PACKAGE__->table("ProductIdentifier");
 __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
-  "productid",
-  { data_type => "integer", is_nullable => 1 },
   "idtypecode",
   { data_type => "integer", is_nullable => 0 },
   "idtypename",
@@ -79,8 +72,8 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key("id");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07022 @ 2013-07-25 09:04:41
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:nIJtUpMEeoe2/2jvYXTAcw
+# Created by DBIx::Class::Schema::Loader v0.07022 @ 2013-07-28 11:24:16
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qxTo95dXHv6vHfswgolT7Q
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

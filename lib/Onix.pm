@@ -39,7 +39,12 @@ sub create_product {
 		reference	=> $product->record_ref,
 		identifier	=> {
 			idtypecode	=> $product->prod_ident->pid_type,
-		}	
+			idvalue		=> $product->prod_ident->id_value,
+		},
+		desc_detail	=> {
+				compositioncode	=> $product->desc_detail->prod_composition,
+				formcode		=> $product->desc_detail->prod_formcode,
+		},
 	});
 }
 #print $product->prod_ident->pid_type, "\n";

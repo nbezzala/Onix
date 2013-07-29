@@ -29,18 +29,26 @@ __PACKAGE__->table("DescriptiveDetail");
   is_auto_increment: 1
   is_nullable: 0
 
-=head2 formid
+=head2 compositioncode
 
   data_type: 'integer'
-  is_nullable: 1
+  is_nullable: 0
+
+=head2 formcode
+
+  data_type: 'char'
+  is_nullable: 0
+  size: 2
 
 =cut
 
 __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
-  "formid",
-  { data_type => "integer", is_nullable => 1 },
+  "compositioncode",
+  { data_type => "integer", is_nullable => 0 },
+  "formcode",
+  { data_type => "char", is_nullable => 0, size => 2 },
 );
 
 =head1 PRIMARY KEY
@@ -56,9 +64,12 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key("id");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07022 @ 2013-07-25 00:42:12
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:xnWTENFBGxrU1OYj1zKfAQ
+# Created by DBIx::Class::Schema::Loader v0.07022 @ 2013-07-29 01:44:18
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qXwEC1htzMAag80IiXRQvg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
+
+__PACKAGE__->has_one( product => 'DB::Schema::Result::Product', 'descdetailid' );
+
 1;

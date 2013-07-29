@@ -1,10 +1,14 @@
 -- create_tables.sql
 
+-- Each Product has 
+--  one ProductIdentifier
+--  one DescriptiveDetail
 DROP TABLE IF EXISTS Product;
 CREATE TABLE Product (
 	ID INTEGER primary key auto_increment,
-	Reference VARCHAR(100) unique not null, -- RecordReference
-	IdentifierID integer references ProductIdentifier(ID)
+	Reference VARCHAR(100) unique NOT NULL, -- RecordReference
+	IdentifierID integer references ProductIdentifier(ID),
+	DescDetailID integer references DescriptiveDetail(ID)
 );
 
 DROP TABLE IF EXISTS ProductIdentifier;
@@ -15,25 +19,32 @@ create table ProductIdentifier (
 	IDValue	 	varchar(255)  -- depends on the IDTypeCode, ToDo 
 );
 
-
-DROP TABLE IF EXISTS ProductForm;
--- part of Descriptive Detail
-create table ProductForm (
+-- A ProductForm can have many FormDetails
+drop table if exists FormDetail;
+create table FormDetail (
 	ID integer primary key auto_increment,
-	CompositionCode int(2) not null,
-	FormCode 	char(2) not null,
+	DescriptiveDetailID integer references DescriptiveDetail(ID),
+	FormDetail char(4) -- a letter followed by 3 digits
+);
+
+
+-- A ProductForm can have many ProductFormFeatures.
+drop table if exists ProductFormFeature;
+create table ProductFormFeature (
+	ID integer primary key auto_increment,
+	ProductFormID integer references ProductForm(ID),
 	FeatureType 	int(2),
 	FeatureValue 	char(2), -- code used depends on FeatureType, add check functions in the model
 	FeatureDesc 	text(500)
 );
-
 
 DROP TABLE IF EXISTS DescriptiveDetail;
 -- Product has one descriptive detail
 -- Mandatory unless NotificationType is Update, and this section is not updated
 create table DescriptiveDetail (
 	ID integer primary key auto_increment,
-	FormID integer references ProductForm(ID)
+	CompositionCode int(2) not null,
+	FormCode 	char(2) not null
 );
 
 drop table if exists CodeList;

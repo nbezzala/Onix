@@ -40,6 +40,11 @@ __PACKAGE__->table("Product");
   data_type: 'integer'
   is_nullable: 1
 
+=head2 descdetailid
+
+  data_type: 'integer'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -48,6 +53,8 @@ __PACKAGE__->add_columns(
   "reference",
   { data_type => "varchar", is_nullable => 0, size => 100 },
   "identifierid",
+  { data_type => "integer", is_nullable => 1 },
+  "descdetailid",
   { data_type => "integer", is_nullable => 1 },
 );
 
@@ -78,10 +85,13 @@ __PACKAGE__->set_primary_key("id");
 __PACKAGE__->add_unique_constraint("Reference", ["reference"]);
 
 
-# Created by DBIx::Class::Schema::Loader v0.07022 @ 2013-07-28 01:14:48
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:jgfh7pzuOT+3LOopXdrusg
+# Created by DBIx::Class::Schema::Loader v0.07022 @ 2013-07-29 00:49:22
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:K8V5gYgloCXDk8GOA/B9CA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
+
 __PACKAGE__->belongs_to( identifier => 'DB::Schema::Result::ProductIdentifier', 'identifierid' );
+__PACKAGE__->belongs_to( desc_detail => 'DB::Schema::Result::DescriptiveDetail', 'descdetailid' );
+
 1;
