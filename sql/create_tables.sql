@@ -64,7 +64,7 @@ create table SupplierIdentifier (
 	
 );
 
--- Product has a ProductSupply for each market
+-- Product has a ProductSupply for each market (and there can be many markets)
 -- Product has many ProductSupply , ProductSupply belongs to a Product
 -- Required, unless NotificationType is Update
 drop table if exists ProductSupply;
@@ -73,6 +73,7 @@ create table ProductSupply (
 	productID integer references Product(ID)
 );
 
+-- a ProductSupply has many SupplyDetails
 drop table if exists SupplyDetail;
 create table SupplyDetail (
 	ID integer primary key auto_increment,

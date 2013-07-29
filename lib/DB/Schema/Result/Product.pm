@@ -93,5 +93,6 @@ __PACKAGE__->add_unique_constraint("Reference", ["reference"]);
 
 __PACKAGE__->belongs_to( identifier => 'DB::Schema::Result::ProductIdentifier', 'identifierid' );
 __PACKAGE__->belongs_to( desc_detail => 'DB::Schema::Result::DescriptiveDetail', 'descdetailid' );
+__PACKAGE__->has_many( supplies => 'DB::Schema::Result::ProductSupply', 'productid' );
 
 1;
