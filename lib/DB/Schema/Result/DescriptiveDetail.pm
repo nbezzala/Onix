@@ -72,5 +72,6 @@ __PACKAGE__->set_primary_key("id");
 
 __PACKAGE__->has_one( product => 'DB::Schema::Result::Product', 'descdetailid' );
 __PACKAGE__->has_many( formdetails => 'DB::Schema::Result::FormDetail', 'descriptivedetailid' );
+__PACKAGE__->has_many( features => 'DB::Schema::Result::ProductFormFeature', 'descriptivedetailid' );
 
 1;

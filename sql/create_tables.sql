@@ -19,7 +19,7 @@ create table ProductIdentifier (
 	IDValue	 	varchar(255)  -- depends on the IDTypeCode, ToDo 
 );
 
--- A ProductForm can have many FormDetails
+-- A DescriptiveDetail has a ProductForm can have many FormDetails
 drop table if exists FormDetail;
 create table FormDetail (
 	ID integer primary key auto_increment,
@@ -28,11 +28,11 @@ create table FormDetail (
 );
 
 
--- A ProductForm can have many ProductFormFeatures.
+-- A DescriptiveDetail has a ProductForm can have many ProductFormFeatures.
 drop table if exists ProductFormFeature;
 create table ProductFormFeature (
 	ID integer primary key auto_increment,
-	ProductFormID integer references ProductForm(ID),
+	DescriptiveDetailID integer references ProductForm(ID),
 	FeatureType 	int(2),
 	FeatureValue 	char(2), -- code used depends on FeatureType, add check functions in the model
 	FeatureDesc 	text(500)

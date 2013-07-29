@@ -23,6 +23,16 @@
 			<ProductForm>BC</ProductForm>
 			<ProductFormDetail>B206</ProductFormDetail>
 			<ProductFormDetail>A209</ProductFormDetail>
+			<ProductFormFeature>
+				<ProductFormFeatureType>32</ProductFormFeatureType>
+				<ProductFormFeatureValue>SW-COC-1806</ProductFormFeatureValue>
+			</ProductFormFeature>
+			<ProductFormFeature>
+				<ProductFormFeatureType>06</ProductFormFeatureType>
+				<ProductFormFeatureValue>03</ProductFormFeatureValue>
+				<ProductFormFeatureDescription>4.1 or later
+				</ProductFormFeatureDescription>
+			</ProductFormFeature>
 		</DescriptiveDetail>
 	</Product>
 </ONIXMessage>

@@ -34,6 +34,17 @@ use XML::Rabbit;
 has_xpath_value		prod_composition => './ProductComposition';
 has_xpath_value		prod_formcode	=> './ProductForm';
 has_xpath_value_list		form_details => './ProductFormDetail';
+has_xpath_object_list	features => './ProductFormFeature'
+						=> 'Onix::Product::DescriptiveDetail::FormFeature';
 
 finalize_class();
 
+
+package Onix::Product::DescriptiveDetail::FormFeature;
+use XML::Rabbit;
+
+has_xpath_value	feature_type => './ProductFormFeatureType';	
+has_xpath_value	feature_value => './ProductFormFeatureValue';	
+has_xpath_value	feature_desc => './ProductFormFeatureDescription';	
+
+finalize_class();

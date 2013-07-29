@@ -35,11 +35,8 @@ sub create_product {
 	my $self 	= shift;
 	my $product	= shift;
 
-print Dumper($product->desc_detail->form_details);
-	my $aref;
-	foreach my $fd ( @{$product->desc_detail->form_details} ) {
-		push @{$aref}, { 'formdetail' => $fd };
-	}
+	my $formdetails = $self->get_form_details($product);
+	my $features = $self->get_formfeatures($product);
 
 	my $new_record = $self->schema->resultset('Product')->create({
 		reference	=> $product->record_ref,
@@ -50,9 +47,39 @@ print Dumper($product->desc_detail->form_details);
 		desc_detail	=> {
 				compositioncode	=> $product->desc_detail->prod_composition,
 				formcode		=> $product->desc_detail->prod_formcode,
-				formdetails	=> $aref,
+				formdetails		=> $formdetails,
+				features		=> $features,
 		},
 	});
+}
+
+sub get_form_details {
+	my $self = shift;
+	my $product = shift;
+
+	my @array;
+	foreach my $fd ( @{$product->desc_detail->form_details} ) {
+		push @array, { 'formdetail' => $fd };
+	}
+	
+	return \@array;
+}
+
+sub get_formfeatures {
+	my $self	= shift;
+	my $product	= shift;
+
+	my @array;
+	foreach my $feature ( @{ $product->desc_detail->features } ) {
+		push @array, 
+			{ 
+				featuretype => $feature->feature_type,
+				 featurevalue	=> $feature->feature_value,
+				 featuredesc	=> $feature->feature_desc,
+			};
+	}
+
+	return \@array;
 }
 
 1;
