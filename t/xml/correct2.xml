@@ -41,6 +41,20 @@
 					<SupplierName>Penguin Publishers</SupplierName>
 				</Supplier>
 				<ProductAvailability>21</ProductAvailability>
+				<SupplyDate>
+					<SupplyDateRole>08</SupplyDateRole>
+					<Date>20130907</Date>
+				</SupplyDate>
+				<Stock>
+					<OnHand>779</OnHand>
+					<OnHand>879</OnHand>
+					<OnOrder>477</OnOrder>
+				</Stock>
+				<Price>
+					<PriceType>22</PriceType>
+					<PriceAmount>12.99</PriceAmount>
+					<CurrencyCode>KES</CurrencyCode>
+				</Price>
 			</SupplyDetail>
 		</ProductSupply>
 	</Product>
@@ -73,6 +87,34 @@
 					<SupplierName>Harper Collins Publishers</SupplierName>
 				</Supplier>
 				<ProductAvailability>21</ProductAvailability>
+				<SupplyDate>
+					<SupplyDateRole>08</SupplyDateRole>
+					<Date>20131201</Date>
+				</SupplyDate>
+				<SupplyDate>
+					<SupplyDateRole>08</SupplyDateRole>
+					<Date>20130907</Date>
+				</SupplyDate>
+				<Stock>
+					<OnHand>789</OnHand>
+					<OnHand>889</OnHand>
+					<OnOrder>487</OnOrder>
+				</Stock>
+				<Stock>
+					<OnHand>1789</OnHand>
+					<OnHand>2889</OnHand>
+					<OnOrder>187</OnOrder>
+				</Stock>
+				<Price>
+					<PriceType>21</PriceType>
+					<PriceAmount>19.99</PriceAmount>
+					<CurrencyCode>INR</CurrencyCode>
+				</Price>
+				<Price>
+					<PriceType>06</PriceType>
+					<PriceAmount>17.99</PriceAmount>
+					<CurrencyCode>INR</CurrencyCode>
+				</Price>
 			</SupplyDetail>
 		</ProductSupply>
 	</Product>
