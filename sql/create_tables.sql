@@ -136,5 +136,5 @@ create table Price (
 	SupplyDetailID integer NOT NULL references SupplyDetail(ID),
 	PriceType int(2), -- code list 58	
 	PriceAmount decimal(16,4), -- assuming no one uses more decimal points
-	CurrencyCode int(2) -- code list 96	
+	CurrencyCode char(3) -- code list 96	
 );
