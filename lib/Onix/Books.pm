@@ -61,21 +61,3 @@ has_xpath_object_list	supply_details => './SupplyDetail'
 finalize_class();
 
 
-package Onix::Product::ProductSupply::SupplyDetail;
-use XML::Rabbit;
-
-has_xpath_value	availability => './ProductAvailability';
-has_xpath_object supplier => './Supplier'
-				=> 'Onix::Product::ProductSupply::SupplyDetail::Supplier';
-
-finalize_class();
-
-
-
-package Onix::Product::ProductSupply::SupplyDetail::Supplier;
-use XML::Rabbit;
-
-has_xpath_value supplier_role => './SupplierRole';
-has_xpath_value supplier_name => './SupplierName';
-
-finalize_class();

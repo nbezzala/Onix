@@ -96,7 +96,7 @@ sub get_supplies {
 		};	
 	}
 
-print Dumper(\@array);
+#print Dumper(\@array);
 	return \@array;
 }
 
@@ -104,14 +104,15 @@ sub get_supply_details {
 	my $self	= shift;
 	my $supply	= shift;
 
-#print Dumper($supply->supply_details);
-
 	my @array;
 	foreach my $supply_detail ( @{ $supply->supply_details }) {
 		push @array,
 			{	
 				productavailability	=> $supply_detail->availability,
 				supplier			=> $self->get_suppliers($supply_detail),
+				supply_dates		=> $self->get_supply_dates($supply_detail),
+				stocks				=> $self->get_stocks($supply_detail),
+				prices				=> $self->get_prices($supply_detail),	
 			 };
 	}
 		
@@ -127,6 +128,67 @@ sub get_suppliers {
 				name		=> $supply_detail->supplier->supplier_name,
 			};
 
+}
+
+sub get_supply_dates {
+	my $self			= shift;
+	my $supply_detail	= shift;
+
+	my @array;
+	foreach my $date ( @{ $supply_detail->supply_dates }) {
+		push @array,
+			{	
+				supplydaterole	=> $date->role,
+				date			=> $date->date,
+			 };
+	}
+		
+	return \@array;
+}
+
+sub get_prices {
+	my $self			= shift;
+	my $supply_detail	= shift;
+
+	my @array;
+	foreach my $price ( @{ $supply_detail->prices }) {
+		push @array,
+			{	
+				pricetype		=> $price->type,
+				priceamount		=> $price->amount,
+				currencycode	=> $price->currency_code,
+			 };
+	}
+		
+	return \@array;
+}
+
+
+sub get_stocks {
+	my $self			= shift;
+	my $supply_detail	= shift;
+
+	my @array;
+	foreach my $stock ( @{ $supply_detail->stocks }) {
+		push @array,
+			{	
+				onorder		=> $stock->on_order,
+				on_hand		=> $self->get_on_hand($stock->on_hand),
+			 };
+	}
+		
+	return \@array;
+}
+
+sub get_on_hand {
+	my $self	= shift;
+	my $on_hand	= shift;
+
+	my @array;
+	foreach my $on_hand ( @$on_hand ) {
+		push @array, { onhand => $on_hand };
+	}
+	return \@array;
 }
 
 1;
