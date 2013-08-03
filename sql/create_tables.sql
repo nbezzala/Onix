@@ -79,7 +79,7 @@ create table SupplyDetail (
 	ID integer primary key auto_increment,
 	ProductSupplyID integer references ProductSupply(ID),
 	SupplierID integer references Supplier(ID),
-	ProductAvailability int(2) -- code list 65	
+	ProductAvailability int(2) NOT NULL -- code list 65	
 );
 
 
