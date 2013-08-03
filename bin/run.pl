@@ -24,15 +24,4 @@ if ( !$valid ) {
 
 my $books = Onix::Books->new( file => $file );
 
-
-#print "RecordReference: ", $product->record_ref, "\n";
-#print "Descriptive Detail: ", $product->desc_detail, "\n";
-#print $product->prod_ident->pid_type, "\n";
-#print $product->prod_ident->id_value, "\n";
-
-#print $books, "\n";
-#print $books->products, "\n";
-#print $books->products->[0], "\n";
-#print Dumper($books->products->[0]);
-
 my $ok = $onix->create_products($books);
