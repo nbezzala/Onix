@@ -78,5 +78,8 @@ __PACKAGE__->set_primary_key("id");
 
 __PACKAGE__->belongs_to( productsupply => 'DB::Schema::Result::ProductSupply', 'productsupplyid' );
 __PACKAGE__->belongs_to( supplier => 'DB::Schema::Result::Supplier', 'supplierid' );
+__PACKAGE__->has_many( prices => 'DB::Schema::Result::Price', 'supplydetailid' );
+__PACKAGE__->has_many( stocks => 'DB::Schema::Result::Stock', 'supplydetailid' );
+__PACKAGE__->has_many( supply_dates => 'DB::Schema::Result::SupplyDate', 'supplydetailid' );
 
 1;
