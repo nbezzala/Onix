@@ -34,5 +34,14 @@
 				</ProductFormFeatureDescription>
 			</ProductFormFeature>
 		</DescriptiveDetail>
+		<ProductSupply>
+			<SupplyDetail>
+				<Supplier>
+					<SupplierRole>01</SupplierRole>
+					<SupplierName>Penguin Publishers</SupplierName>
+				</Supplier>
+				<ProductAvailability>21</ProductAvailability>
+			</SupplyDetail>
+		</ProductSupply>
 	</Product>
 </ONIXMessage>

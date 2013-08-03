@@ -78,6 +78,7 @@ drop table if exists SupplyDetail;
 create table SupplyDetail (
 	ID integer primary key auto_increment,
 	ProductSupplyID integer references ProductSupply(ID),
+	SupplierID integer references Supplier(ID),
 	ProductAvailability int(2) -- code list 65	
 );
 
@@ -86,7 +87,6 @@ create table SupplyDetail (
 drop table if exists Supplier;
 create table Supplier (
 	ID integer primary key auto_increment,
-	SupplyDetailID integer references SupplyDetail(ID),
 	RoleCode int(2), -- code list 93
 	Name varchar(100)
 );

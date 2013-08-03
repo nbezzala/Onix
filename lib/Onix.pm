@@ -37,6 +37,7 @@ sub create_product {
 
 	my $formdetails = $self->get_form_details($product);
 	my $features = $self->get_formfeatures($product);
+	my $supplies = $self->get_supplies($product);
 
 	my $new_record = $self->schema->resultset('Product')->create({
 		reference	=> $product->record_ref,
@@ -50,6 +51,7 @@ sub create_product {
 				formdetails		=> $formdetails,
 				features		=> $features,
 		},
+		supplies => $supplies,
 	});
 }
 
@@ -80,6 +82,51 @@ sub get_formfeatures {
 	}
 
 	return \@array;
+}
+
+sub get_supplies {
+	my $self	= shift;
+	my $product	= shift;
+
+	my @array;
+	foreach my $supply ( @{ $product->supplies }) {
+		push @array,
+		{
+			supply_details => $self->get_supply_details($supply)
+		};	
+	}
+
+print Dumper(\@array);
+	return \@array;
+}
+
+sub get_supply_details {
+	my $self	= shift;
+	my $supply	= shift;
+
+#print Dumper($supply->supply_details);
+
+	my @array;
+	foreach my $supply_detail ( @{ $supply->supply_details }) {
+		push @array,
+			{	
+				productavailability	=> $supply_detail->availability,
+				supplier			=> $self->get_suppliers($supply_detail),
+			 };
+	}
+		
+	return \@array;
+}
+
+sub get_suppliers {
+	my $self			= shift;
+	my $supply_detail	= shift;
+
+	return	{
+				rolecode	=> $supply_detail->supplier->supplier_role,
+				name		=> $supply_detail->supplier->supplier_name,
+			};
+
 }
 
 1;
