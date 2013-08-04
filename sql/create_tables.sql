@@ -50,7 +50,7 @@ create table DescriptiveDetail (
 drop table if exists CodeList;
 CREATE TABLE CodeList (
 	Number INT(2),
-	Value INT(2),
+	Value CHAR(4),
 	Description VARCHAR(100),
 	Notes TEXT,
 	IssueNumber int(3),
