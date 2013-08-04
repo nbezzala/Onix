@@ -33,7 +33,7 @@ create table ProductFormFeature (
 	ID integer primary key auto_increment,
 	DescriptiveDetailID integer NOT NULL references ProductForm(ID),
 	FeatureType 	int(2),
-	FeatureValue 	char(2), -- code used depends on FeatureType, add check functions in the model
+	FeatureValue 	varchar(20), -- code used depends on FeatureType, add check functions in the model
 	FeatureDesc 	text(500)
 );
 
