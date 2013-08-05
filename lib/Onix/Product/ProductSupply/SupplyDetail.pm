@@ -63,10 +63,21 @@ finalize_class();
 
 package Onix::Product::ProductSupply::SupplyDetail::Price;
 use XML::Rabbit;
+with 'Onix::ValidateCodes';
 
 has_xpath_value type			=> './PriceType';
 has_xpath_value amount			=> './PriceAmount';
 has_xpath_value currency_code	=> './CurrencyCode';
+
+sub BUILD {
+	my $self = shift;
+
+	die "Invalid Code used for PriceType: " . $self->type . "\n" 
+	unless $self->check_code($self->type, 58);
+
+	die "Invalid Code used for CurrencyCode: " . $self->currency_code. "\n" 
+	unless $self->check_code($self->currency_code, 96);
+}
 
 finalize_class();
 
