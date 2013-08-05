@@ -17,9 +17,17 @@ finalize_class();
 
 package Onix::Product::ProductSupply::SupplyDetail::Supplier;
 use XML::Rabbit;
+with 'Onix::ValidateCodes';
 
 has_xpath_value supplier_role => './SupplierRole';
 has_xpath_value supplier_name => './SupplierName';
+
+sub BUILD {
+	my $self = shift;
+
+	die "Invalid Code used for SupplierRole: " . $self->supplier_role . "\n" 
+	unless $self->check_code($self->supplier_role, 93);
+}
 
 finalize_class();
 
@@ -35,7 +43,7 @@ has_xpath_value date	=> './Date';
 sub BUILD {
 	my $self = shift;
 
-	die "Invalid Code used for SupplierRole: " . $self->role . "\n" 
+	die "Invalid Code used for SupplyDateRole: " . $self->role . "\n" 
 	unless $self->check_code($self->role, 166);
 }
 
