@@ -16,12 +16,21 @@ use Data::Dumper;
 my $onix = Onix->new_with_options();
 my $file = $onix->xml_file;
 
+print "Processing file: $file\n";
+
 my $valid = Onix::ValidateXML->new(xml => $file);
 if ( !$valid ) {
 	print "\nCan not prcess the XML file because of the above errors\n";
 	exit 0;
 }
 
+print "File is valid XML\n";
+
 my $books = Onix::Books->new( file => $file );
 
-my $ok = $onix->create_products($books);
+my $ok = $onix->validate_codes($books);
+
+$ok = $onix->create_products($books);
+
+print "Done\n";
+
