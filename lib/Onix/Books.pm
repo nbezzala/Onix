@@ -55,6 +55,9 @@ sub BUILD {
 	die "Invalid Code used for ProductComposition: " . $self->prod_composition . "\n" 
 	unless $self->check_code($self->prod_composition, 2);
 
+	die "Invalid Code used for ProductForm: " . $self->prod_formcode . "\n" 
+	unless $self->check_code($self->prod_formcode, 150);
+
 	foreach my $detail ( @{$self->form_details} ) {
 		die "Invalid Code used for ProductFormDetail: $detail \n" 
 		unless $self->check_code($detail, 175);
