@@ -1,5 +1,6 @@
 package Onix::Product::ProductSupply::SupplyDetail;
 use XML::Rabbit;
+with 'Onix::ValidateCodes';
 
 has_xpath_value	availability => './ProductAvailability';
 has_xpath_object supplier => './Supplier'
@@ -10,6 +11,13 @@ has_xpath_object_list stocks => './Stock'
 				=> 'Onix::Product::ProductSupply::SupplyDetail::Stock';
 has_xpath_object_list prices => './Price'
 				=> 'Onix::Product::ProductSupply::SupplyDetail::Price';
+
+sub BUILD {
+	my $self = shift;
+
+	die "Invalid Code used for ProductAvailability: " . $self->availability . "\n" 
+	unless $self->check_code($self->availability, 65);
+}
 
 finalize_class();
 
