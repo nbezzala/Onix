@@ -31,7 +31,7 @@ has_xpath_value		id_value => './IDValue';
 sub BUILD {
 	my $self = shift;
 
-	die "Invalid Code used for ProductIDType\n" 
+	die "Invalid Code used for ProductIDType: " . $self->pid_type . "\n" 
 	unless $self->check_code($self->pid_type, 5);
 }
 
@@ -40,12 +40,23 @@ finalize_class();
 
 package Onix::Product::DescriptiveDetail;
 use XML::Rabbit;
+use Data::Dumper;
+with 'Onix::ValidateCodes';
 
 has_xpath_value		prod_composition => './ProductComposition';
 has_xpath_value		prod_formcode	=> './ProductForm';
 has_xpath_value_list		form_details => './ProductFormDetail';
 has_xpath_object_list	features => './ProductFormFeature'
 						=> 'Onix::Product::DescriptiveDetail::FormFeature';
+
+sub BUILD {
+	my $self = shift;
+
+	foreach my $detail ( @{$self->form_details} ) {
+		die "Invalid Code used for ProductFormDetail: $detail \n" 
+		unless $self->check_code($detail, 175);
+	}
+}
 
 finalize_class();
 
