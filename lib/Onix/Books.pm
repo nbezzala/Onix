@@ -23,9 +23,17 @@ finalize_class();
 
 package Onix::Product::ProductIdentifier;
 use XML::Rabbit;
+with 'Onix::ValidateCodes';
 
 has_xpath_value		pid_type => './ProductIDType';
 has_xpath_value		id_value => './IDValue';
+
+sub BUILD {
+	my $self = shift;
+
+	die "Invalid Code used for ProductIDType\n" 
+	unless $self->check_code($self->pid_type, 5);
+}
 
 finalize_class();
 

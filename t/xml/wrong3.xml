@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!-- Wrong ProductIDType -->
+<ONIXMessage release="3.0">
+	<Header>
+	<!-- message header data elements -->
+		<Sender>
+			<SenderName>Global Bookinfo</SenderName>
+			<ContactName>Jane King</ContactName>
+			<EmailAddress>jbk@globalbookinfo.com</EmailAddress>
+		</Sender>
+		<Addressee>
+			<AddresseeName>BooksBooksBooks.com</AddresseeName>
+		</Addressee>
+		<SentDateTime>20090510</SentDateTime>
+	</Header>
+	<Product>
+		<RecordReference>www.globalbookinfo.com-01734530</RecordReference>
+		<ProductIdentifier>
+			<ProductIDType>35</ProductIDType>
+			<IDValue>9780007232834</IDValue>
+		</ProductIdentifier>
+		<DescriptiveDetail>
+			<ProductComposition>00</ProductComposition>
+			<ProductForm>BC</ProductForm>
+			<ProductFormDetail>B206</ProductFormDetail>
+			<ProductFormDetail>A209</ProductFormDetail>
+			<ProductFormFeature>
+				<ProductFormFeatureType>32</ProductFormFeatureType>
+				<ProductFormFeatureValue>SW-COC-1806</ProductFormFeatureValue>
+			</ProductFormFeature>
+			<ProductFormFeature>
+				<ProductFormFeatureType>06</ProductFormFeatureType>
+				<ProductFormFeatureValue>03</ProductFormFeatureValue>
+				<ProductFormFeatureDescription>4.1 or later
+				</ProductFormFeatureDescription>
+			</ProductFormFeature>
+		</DescriptiveDetail>
+		<ProductSupply>
+			<SupplyDetail>
+				<Supplier>
+					<SupplierRole>01</SupplierRole>
+					<SupplierName>Penguin Publishers</SupplierName>
+				</Supplier>
+				<ProductAvailability>21</ProductAvailability>
+			</SupplyDetail>
+		</ProductSupply>
+	</Product>
+</ONIXMessage>
