@@ -52,6 +52,9 @@ has_xpath_object_list	features => './ProductFormFeature'
 sub BUILD {
 	my $self = shift;
 
+	die "Invalid Code used for ProductComposition: " . $self->prod_composition . "\n" 
+	unless $self->check_code($self->prod_composition, 2);
+
 	foreach my $detail ( @{$self->form_details} ) {
 		die "Invalid Code used for ProductFormDetail: $detail \n" 
 		unless $self->check_code($detail, 175);
