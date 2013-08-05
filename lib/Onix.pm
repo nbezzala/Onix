@@ -96,7 +96,6 @@ sub get_supplies {
 		};	
 	}
 
-#print Dumper(\@array);
 	return \@array;
 }
 

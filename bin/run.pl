@@ -28,9 +28,13 @@ print "File is valid XML\n";
 
 my $books = Onix::Books->new( file => $file );
 
-my $ok = $onix->validate_codes($books);
+#my $ok = $onix->validate_codes($books);
+#if ( !$ok ) {
+#	print "Invalid codes used\n";
+#	exit 0;
+#}
 
-$ok = $onix->create_products($books);
+my $ok = $onix->create_products($books);
 
 print "Done\n";
 
