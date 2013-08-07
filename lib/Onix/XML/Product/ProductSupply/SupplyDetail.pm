@@ -1,16 +1,16 @@
-package Onix::Product::ProductSupply::SupplyDetail;
+package Onix::XML::Product::ProductSupply::SupplyDetail;
 use XML::Rabbit;
 with 'Onix::ValidateCodes';
 
 has_xpath_value	availability => './ProductAvailability';
 has_xpath_object supplier => './Supplier'
-				=> 'Onix::Product::ProductSupply::SupplyDetail::Supplier';
+				=> 'Onix::XML::Product::ProductSupply::SupplyDetail::Supplier';
 has_xpath_object_list supply_dates => './SupplyDate'
-				=> 'Onix::Product::ProductSupply::SupplyDetail::SupplyDate';
+				=> 'Onix::XML::Product::ProductSupply::SupplyDetail::SupplyDate';
 has_xpath_object_list stocks => './Stock'
-				=> 'Onix::Product::ProductSupply::SupplyDetail::Stock';
+				=> 'Onix::XML::Product::ProductSupply::SupplyDetail::Stock';
 has_xpath_object_list prices => './Price'
-				=> 'Onix::Product::ProductSupply::SupplyDetail::Price';
+				=> 'Onix::XML::Product::ProductSupply::SupplyDetail::Price';
 
 sub BUILD {
 	my $self = shift;
@@ -23,7 +23,7 @@ finalize_class();
 
 
 
-package Onix::Product::ProductSupply::SupplyDetail::Supplier;
+package Onix::XML::Product::ProductSupply::SupplyDetail::Supplier;
 use XML::Rabbit;
 with 'Onix::ValidateCodes';
 
@@ -41,7 +41,7 @@ finalize_class();
 
 
 
-package Onix::Product::ProductSupply::SupplyDetail::SupplyDate;
+package Onix::XML::Product::ProductSupply::SupplyDetail::SupplyDate;
 use XML::Rabbit;
 with 'Onix::ValidateCodes';
 
@@ -59,7 +59,7 @@ finalize_class();
 
 
 
-package Onix::Product::ProductSupply::SupplyDetail::Stock;
+package Onix::XML::Product::ProductSupply::SupplyDetail::Stock;
 use XML::Rabbit;
 
 has_xpath_value 		on_order	=> './OnOrder';
@@ -69,7 +69,7 @@ finalize_class();
 
 
 
-package Onix::Product::ProductSupply::SupplyDetail::Price;
+package Onix::XML::Product::ProductSupply::SupplyDetail::Price;
 use XML::Rabbit;
 with 'Onix::ValidateCodes';
 
