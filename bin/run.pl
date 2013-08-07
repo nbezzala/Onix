@@ -6,7 +6,7 @@ use FindBin;
 use lib "$FindBin::Bin/../lib";
 
 use Onix;
-use Onix::Books;
+use Onix::XML;
 use Onix::ValidateXML;
 use Data::Dumper;
 
@@ -26,15 +26,15 @@ if ( !$valid ) {
 
 print "File is valid XML\n";
 
-my $books = Onix::Books->new( file => $file );
+my $xml = Onix::XML->new( file => $file );
 
-#my $ok = $onix->validate_codes($books);
+#my $ok = $onix->validate_codes($xml);
 #if ( !$ok ) {
 #	print "Invalid codes used\n";
 #	exit 0;
 #}
 
-my $ok = $onix->create_products($books);
+my $ok = $onix->create_products($xml);
 
 print "Done\n";
 
