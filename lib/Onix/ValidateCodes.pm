@@ -12,8 +12,14 @@ Each code list in turn has a hash where the code value is 1 if it is valid.
 We can use this hash to check if the XML has used valid codes.
 =cut
 
+has codes	=> ( 'is' => 'rw', 'isa' => 'HashRef', );
+
 sub get_all_codes {
 	my $self = shift;
+
+	if ( defined($self->codes) ) {
+		return $self->codes;
+	}
 
 	my $file = "/root/nitish/Onix/ONIX_Books_3.0_sample_1/ONIX_BookProduct_CodeLists_Issue_21.csv";
 	my $csv = Text::CSV->new( {binary => 1} )
@@ -25,7 +31,8 @@ sub get_all_codes {
 	while ( my $row = $csv->getline($fh) ) {
 		$hash{ $row->[0] }->{$row->[1]} = 1;
 	}
-	
+
+	$self->codes(\%hash);	
 	return \%hash;
 }
 
